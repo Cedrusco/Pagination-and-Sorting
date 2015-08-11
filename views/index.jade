@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	div(ng-controller='tableController')
+		div
+			.search-bar
+			label Search
+			input(ng-model='searchText')
+			.page-size(style='padding-top:10px; padding-bottom:10px;')
+			| page size : 
+			a(href='javascript:void(0)', style='padding-left:10px', ng-click='setPageSize(pageSize)', ng-repeat='pageSize in [10,20,30]')  {{pageSize}}
+			div(paging data='tableData = ( inputData | orderBy:sort.sortingOrder:sort.sortReverseDirection | filter:searchText  )', current-page='dataCurrentPage', page-size='dataPageSize')
+			div(class="datagrid")
+				table
+					thead
+						tr
+							td(ng-repeat='header in headers', sort-table header-name='header' custom-sort='sort') {{header}}
+					tbody
+						tr(ng-repeat='rowData in tableData  | pagingFilter:dataPageSize:dataCurrentPage')
+							td(ng-repeat='header in headers')
+								| {{rowData[header]}}
+			|Found {{tableData.length}} search results

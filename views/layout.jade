@@ -1,0 +1,14 @@
+doctype html
+html(ng-app='sampleTable')
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+		link(rel='stylesheet', href='/stylesheets/table_styles.css')
+		script(type='text/javascript', src='/javascripts/vendor/angular.js')
+		script(type='text/javascript', src='/javascripts/vendor/jquery-2.1.4.js')
+		script(type='text/javascript', src='/javascripts/app/controller/main.js')
+		script(type='text/javascript', src='/javascripts/app/Constants/constants.js')
+		script(type='text/javascript', src='/javascripts/app/directive/tablePaginate.js')
+	body
+		block content
